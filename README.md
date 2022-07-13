@@ -5,14 +5,57 @@ Lifecycle callbacks to be aware of different events in the route navigation and 
 
 ## Usage
 
-To use this plugin, add [lifecycle_aware_state](https://pub.dev/packages/lifecycle_aware_state/install) as a dependency in your pubspec.yaml file.
+1. To use this plugin, add [lifecycle_aware_state](https://pub.dev/packages/lifecycle_aware_state/install) as a dependency in your pubspec.yaml file.
 
 ```yaml
 dependencies:
   lifecycle_aware_state: ^lastVersion
 ```
 
-## Example
+2. Add `navigatorObservers: [LifecycleAwareState.routeObserver]` to your MaterialApp object
+
+```dart
+class MyApp extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      ...
+      navigatorObservers: [LifecycleAwareState.routeObserver], // register routeObserver with flutter navigator
+      ...
+    );
+  }
+}
+```
+
+3. Configure flags before flutter bootstrap your app
+
+```dart
+void main() {
+  LifecycleAwareState.logClassSuffixes = ['Page']; // log classes with name ending 'Page'
+  LifecycleAwareState.logSuffixedClassesOnly = true; // enable log only for suffixed classes defined above
+  runApp(const MyApp());
+}
+```
+
+4. now extend your State class from `LifecycleAwareState`
+
+```dart
+class _MyHomePageState extends LifecycleAwareState<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Scaffold(
+      appBar: AppBar(title: const Text('LifecycleAwareState Demo')),
+      body: const Center(
+        child: Text('Hello Lifecycle'),
+      ),
+    );
+  }
+}
+```
+
+## Full Example
 
 ```dart
 import 'package:flutter/material.dart';
