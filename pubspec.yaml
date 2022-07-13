@@ -1,0 +1,17 @@
+name: lifecycle_aware_state
+description: Lifecycle callbacks to be aware of different events in the route navigation and state lifecycle in a flutter project
+version: 0.0.1
+homepage: https://github.com/javaherisaber/lifecycle_aware_state
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
