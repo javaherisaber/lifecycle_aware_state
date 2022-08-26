@@ -22,7 +22,6 @@ abstract class LifecycleAwareState<T extends StatefulWidget>
   static String logTag = 'LifecycleAwareState =>';
 
   @override
-  @mustCallSuper
   Widget build(BuildContext context) {
     _printEvent('building widget...');
     return Scaffold(
